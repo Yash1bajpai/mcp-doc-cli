@@ -1,1 +1,134 @@
-IyBtY3AtZG9jLWNsaQoKIVtQeXRob25dKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvUHl0aG9uLTMuMTAlMkItYmx1ZT9zdHlsZT1mbGF0LXNxdWFyZSZsb2dvPXB5dGhvbikKIVtNQ1BdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvTUNQLVNESy1vcmFuZ2U/c3R5bGU9ZmxhdC1zcXVhcmUpCiFbT3BlblJvdXRlcl0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9PcGVuUm91dGVyLUZyZWUlMjBUaWVyLWdyZWVuP3N0eWxlPWZsYXQtc3F1YXJlKQoKQSAqKnRlcm1pbmFsLWJhc2VkIEFJIGFzc2lzdGFudCoqIGJ1aWx0IHdpdGggdGhlIFtNb2RlbCBDb250ZXh0IFByb3RvY29sIChNQ1ApXShodHRwczovL21vZGVsY29udGV4dHByb3RvY29sLmlvKSB0aGF0IGNhbiByZWFkLCBlZGl0LCBhbmQgc3VtbWFyaXplIGRvY3VtZW50cyDigJQgcG93ZXJlZCBieSBhbnkgZnJlZSBPcGVuUm91dGVyIG1vZGVsLgoKQnVpbHQgYXMgYSBoYW5kcy1vbiBwcm9qZWN0IGFsb25nc2lkZSB0aGUgW0FudGhyb3BpYyBBY2FkZW15IE1DUCBDb3Vyc2VdKGh0dHBzOi8vYW50aHJvcGljLnNraWxsamFyLmNvbS9pbnRyb2R1Y3Rpb24tdG8tbW9kZWwtY29udGV4dC1wcm90b2NvbCkuCgotLS0KCiMjIERlbW8KCmBgYAo+IHdoYXQgaXMgQHJlcG9ydC5wZGYgYWJvdXQ/ClJlc3BvbnNlOgpUaGUgcmVwb3J0IGRldGFpbHMgdGhlIHN0YXRlIG9mIGEgMjBtIGNvbmRlbnNlciB0b3dlci4KCj4gL3N1bW1hcml6ZSBmaW5hbmNpYWxzLmRvY3gKUmVzcG9uc2U6ClRoZSBmaW5hbmNpYWxzIGRvY3VtZW50IG91dGxpbmVzIHRoZSBwcm9qZWN0J3MgYnVkZ2V0IGFuZCBleHBlbmRpdHVyZXMuLi4KCj4gZWRpdCBkZXBvc2l0aW9uLm1kIGFuZCByZXBsYWNlICJBbmdlbGEgU21pdGgiIHdpdGggIkpvaG4gRG9lIgpSZXNwb25zZToKRG9uZS4gVGhlIGRvY3VtZW50IG5vdyByZWFkczogIlRoaXMgZGVwb3NpdGlvbiBjb3ZlcnMgdGhlIHRlc3RpbW9ueSBvZiBKb2huIERvZSwgUC5FLiIKYGBgCgotLS0KCiMjIEZlYXR1cmVzCgotICoqQ2hhdCoqIHdpdGggYW4gTExNIGRpcmVjdGx5IGZyb20geW91ciB0ZXJtaW5hbAotICoqQG1lbnRpb24gZG9jdW1lbnRzKiog4oCUIGluamVjdCBkb2MgY29udGVudCBpbnRvIGNvbnRleHQgYXV0b21hdGljYWxseQotICoqTUNQIFRvb2xzKiog4oCUIEFJIHJlYWRzIGFuZCBlZGl0cyBkb2N1bWVudHMgdmlhIHRvb2wgY2FsbHMKLSAqKk1DUCBSZXNvdXJjZXMqKiDigJQgVVJJLWJhc2VkIGRvY3VtZW50IGFjY2VzcyAoYGRvY3M6Ly9kb2N1bWVudHNgKQotICoqTUNQIFByb21wdHMqKiDigJQgYC9mb3JtYXRgIGFuZCBgL3N1bW1hcml6ZWAgd2l0aCB0YWIgYXV0b2NvbXBsZXRlCi0gKipBdXRvLXJldHJ5Kiogb24gcmF0ZSBsaW1pdCAoNDI5KSB3aXRoIGJhY2tvZmYKLSAqKkZyZWUqKiDigJQgd29ya3Mgd2l0aCBhbnkgT3BlblJvdXRlciBmcmVlIG1vZGVsLCBubyBjcmVkaXQgY2FyZCBuZWVkZWQKCi0tLQoKIyMgQXJjaGl0ZWN0dXJlCgpgYGAKbWFpbi5weQrilJzilIAilIAgTUNQQ2xpZW50ICAgICAgICDihpIgU3Bhd25zIG1jcF9zZXJ2ZXIucHkgYXMgc3VicHJvY2VzcyB2aWEgc3RkaW8K4pSCICAgICAgICAgICAgICAgICAgSGFuZGxlcyB0b29sIGNhbGxzLCByZXNvdXJjZSByZWFkcywgcHJvbXB0IGZldGNoZXMK4pSc4pSA4pSAIGNvcmUvY2xhdWRlLnB5ICAgIOKGkiBPcGVuUm91dGVyIEFQSSB3cmFwcGVyIChPcGVuQUktY29tcGF0aWJsZSkK4pSc4pSA4pSAIGNvcmUvY2xpX2NoYXQucHkgIOKGkiBAIG1lbnRpb24gcGFyc2luZywgL2NvbW1hbmQgcm91dGluZywgdG9vbCBvcmNoZXN0cmF0aW9uCuKUnOKUgOKUgCBjb3JlL2NoYXQucHkgICAgIOKGkiBCYXNlIGNoYXQgbG9vcCB3aXRoIG1lc3NhZ2UgaGlzdG9yeQrilJzilIAilIAgY29yZS90b29scy5weSAgICDihpIgTUNQIHRvb2wgZXhlY3V0aW9uIG1hbmFnZXIK4pSU4pSA4pSAIGNvcmUvY2xpLnB5ICAgICAgIOKGkiBwcm9tcHQtdG9vbGtpdCBDTEkgd2l0aCB0YWIgYXV0b2NvbXBsZXRlICsga2V5IGJpbmRpbmdzCgptY3Bfc2VydmVyLnB5CuKUnOKUgOKUgCBUb29scyAgICAgIOKGkiByZWFkX2RvY19jb250ZW50cywgZWRpdF9kb2N1bWVudArilJzilIAilIAgUmVzb3VyY2VzIOKGkiBkb2NzOi8vZG9jdW1lbnRzLCBkb2NzOi8vZG9jdW1lbnRzL3tkb2NfaWR9CuKUlOKUgOKUgCBQcm9tcHRzICAgIOKGkiAvZm9ybWF0LCAvc3VtbWFyaXplCmBgYAoKLS0tCgojIyBTZXR1cAoKIyMjIDEuIEdldCBhIGZyZWUgQVBJIGtleQpTaWduIHVwIGF0IFtvcGVucm91dGVyLmFpXShodHRwczovL29wZW5yb3V0ZXIuYWkpIOKGkiAqKktleXMqKiDihpIgKipDcmVhdGUgS2V5KioKTm8gY3JlZGl0IGNhcmQgcmVxdWlyZWQuIEJyb3dzZSBmcmVlIG1vZGVscyBhdCBbb3BlbnJvdXRlci5haS9tb2RlbHM/bWF4X3ByaWNlPTBdKGh0dHBzOi8vb3BlbnJvdXRlci5haS9tb2RlbHM/bWF4X3ByaWNlPTApCgojIyMgMi4gQ2xvbmUKYGBgYmFzaApnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL1lhc2gxYmFqcGFpL21jcC1kb2MtY2xpCmNkIG1jcC1kb2MtY2xpCmBgYAoKIyMjIDMuIEluc3RhbGwgZGVwZW5kZW5jaWVzCgoqKldpdGggdXYgKHJlY29tbWVuZGVkKToqKgpgYGBiYXNoCnBpcCBpbnN0YWxsIHV2CnV2IHN5bmMKYGBgCgoqKldpdGggcGlwOioqCmBgYGJhc2gKcGlwIGluc3RhbGwgYW50aHJvcGljIG1jcCBvcGVuYWkgcHJvbXB0LXRvb2xraXQgcHl0aG9uLWRvdGVudgpgYGAKCiMjIyA0LiBDb25maWd1cmUgYC5lbnZgCmBgYGJhc2gKY3AgLmVudi5leGFtcGxlIC5lbnYKYGBgCkVkaXQgYC5lbnZgOgpgYGBlbnYKQ0xBVURFX01PREVMPSJ tb29uc2hvdGFpL2tpbWktazIuNjpmcmVlIgpBTlRIUk9QSUNfQVBJX0tFWT0ic2stb3IteW91ci1rZXktaGVyZSIKVVNFX1VWPTEKYGBgCgojIyMgNS4gUnVuCmBgYGJhc2gKdXYgcnVuIG1haW4ucHkKYGBgCgotLS0KCiMjIFVzYWdlCgojIyMgQmFzaWMgY2hhdApgYGAKPiBleHBsYWluIHdoYXQgTUNQIGlzIGluIHNpbXBsZSB0ZXJtcwpgYGAKCiMjIyBAbWVudGlvbiBhIGRvY3VtZW50CmBgYAo+IHdoYXQgZG9lcyBAZGVwb3NpdGlvbi5tZCBzYXk/Cj4gY29tcGFyZSBAcmVwb3J0LnBkZiBhbmQgQG91dGxvb2sucGRmCmBgYAoKIyMjIFNsYXNoIGNvbW1hbmRzICh0YWIgYXV0b2NvbXBsZXRlIGluY2x1ZGVkKQpgYGAKPiAvZm9ybWF0IHBsYW4ubWQKPiAvc3VtbWFyaXplIHJlcG9ydC5wZGYKYGBgCgojIyMgRWRpdCBhIGRvY3VtZW50CmBgYAo+IGVkaXQgc3BlYy50eHQgYW5kIHJlcGxhY2UgImVxdWlwbWVudCIgd2l0aCAiaGFyZHdhcmUiCmBgYAoKLS0tCgojIyBNQ1AgQ29uY2VwdHMgRGVtb25zdHJhdGVkCgp8IFByaW1pdGl2ZSB8IEltcGxlbWVudGF0aW9uIHwKfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLS18CnwgKipUb29scyoqIHwgYHJlYWRfZG9jX2NvbnRlbnRzYCwgYGVkaXRfZG9jdW1lbnRgIHwKfCAqKlJlc291cmNlcyoqIHwgYGRvY3M6Ly9kb2N1bWVudHNgLCBgZG9jczovL2RvY3VtZW50cy97aWR9YCB8CnwgKipQcm9tcHRzKiogfCBgL2Zvcm1hdGAsIGAvc3VtbWFyaXplYCB8CgotLS0KCiMjIEF2YWlsYWJsZSBEb2N1bWVudHMgKGRlZmF1bHQpCgp8IEZpbGUgfCBEZXNjcmlwdGlvbiB8CnwtLS0tLXwtLS0tLS0tLS0tLS0tfAp8IGBkZXBvc2l0aW9uLm1kYCB8IFRlc3RpbW9ueSBvZiBBbmdlbGEgU21pdGgsIFAuRS4gfAp8IGByZXBvcnQucGRmYCB8IFN0YXRlIG9mIGEgMjBtIGNvbmRlbnNlciB0b3dlciB8CnwgYGZpbmFuY2lhbHMuZG9jeGAgfCBQcm9qZWN0IGJ1ZGdldCBhbmQgZXhwZW5kaXR1cmVzIHwKfCBgb3V0bG9vay5wZGZgIHwgUHJvamVjdGVkIGZ1dHVyZSBzeXN0ZW0gcGVyZm9ybWFuY2UgfAp8IGBwbGFuLm1kYCB8IFByb2plY3QgaW1wbGVtZW50YXRpb24gc3RlcHMgfAp8IGBzcGVjLnR4dGAgfCBUZWNobmljYWwgZXF1aXBtZW50IHJlcXVpcmVtZW50cyB8CgpBZGQgeW91ciBvd24gaW4gYG1jcF9zZXJ2ZXIucHlgIOKGkiBgZG9jc2AgZGljdC4KCi0tLQoKIyMgVGVjaCBTdGFjawoKfCBQYWNrYWdlIHwgUHVycG9zZSB8CnwtLS0tLS0tfC0tLS0tLS0tfAp8IFttY3BdKGh0dHBzOi8vZ2l0aHViLmNvbS9tb2RlbGNvbnRleHRwcm90b2NvbC9weXRob24tc2RrKSB8IE1DUCBzZXJ2ZXIgKyBjbGllbnQgfAp8IFtvcGVuYWldKGh0dHBzOi8vZ2l0aHViLmNvbS9vcGVuYWkvb3BlbmFpLXB5dGhvbikgfCBPcGVuUm91dGVyIEFQSSBjYWxscyB8CnwgW3Byb21wdC10b29sa2l0XShodHRwczovL2dpdGh1Yi5jb20vcHJvbXB0LXRvb2xraXQvcHl0aG9uLXByb21wdC10b29sa2l0KSB8IFRhYiBhdXRvY29tcGxldGUsIGhpc3RvcnkgfAp8IFt1dl0oaHR0cHM6Ly9naXRodWIuY29tL2FzdHJhbC1zaC91dikgfCBGYXN0IGRlcGVuZGVuY3kgbWFuYWdlbWVudCB8CgotLS0KCiMjIFJlbGF0ZWQKCi0gW0FudGhyb3BpYyBBY2FkZW15IOKAlCBNQ1AgQ291cnNlXShodHRwczovL2FudGhyb3BpYy5za2lsbGphci5jb20vaW50cm9kdWN0aW9uLXRvLW1vZGVsLWNvbnRleHQtcHJvdG9jb2wpCi0gW01DUCBTcGVjaWZpY2F0aW9uXShodHRwczovL21vZGVsY29udGV4dHByb3RvY29sLmlvKQotIFtPcGVuUm91dGVyIEZyZWUgTW9kZWxzXShodHRwczovL29wZW5yb3V0ZXIuYWkvbW9kZWxzP21heF9wcmljZT0wKQoKLS0tCgojIyBMaWNlbnNlCk1JVA==
+# mcp-doc-cli
+
+A command-line AI assistant built with **Model Context Protocol (MCP)** that can read, edit, and summarize documents — powered by any OpenRouter-compatible LLM (free tier supported).
+
+Built as part of the [Anthropic Academy MCP Course](https://anthropic.skilljar.com/introduction-to-model-context-protocol).
+
+---
+
+## What it does
+
+- Chat with an LLM directly from your terminal
+- **@mention documents** to inject their content into context
+- **MCP Tools** — AI can read and edit documents via tool calls
+- **MCP Resources** — lists and fetches docs via URI (`docs://documents`)
+- **MCP Prompts** — `/format` and `/summarize` slash commands with tab autocomplete
+- Auto-retry on rate limit (429) with backoff
+- Works with any OpenRouter free model — no paid API needed
+
+---
+
+## Architecture
+
+```
+main.py
+├── MCPClient          # Spawns mcp_server.py as subprocess, handles tool/resource/prompt calls
+├── Claude (core/)     # OpenRouter API wrapper (OpenAI-compatible)
+├── CliChat (core/)    # Orchestrates @mentions, /commands, tool execution
+└── CliApp  (core/)    # prompt-toolkit CLI with tab autocomplete
+```
+
+---
+
+## Setup
+
+### 1. Get a free API key
+
+Sign up at [openrouter.ai](https://openrouter.ai) → Keys → Create Key (no credit card needed)
+
+### 2. Clone and install
+
+```bash
+git clone https://github.com/Yash1bajpai/mcp-doc-cli
+cd mcp-doc-cli
+```
+
+Install with `uv` (recommended):
+
+```bash
+pip install uv
+uv sync
+```
+
+Or with pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure `.env`
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+
+```
+CLAUDE_MODEL="moonshotai/kimi-k2.6:free"   # or any free model from openrouter.ai/models?max_price=0
+ANTHROPIC_API_KEY="sk-or-your-key-here"
+USE_UV=1
+```
+
+### 4. Run
+
+```bash
+uv run main.py
+```
+
+---
+
+## Usage
+
+### Basic chat
+```
+> what is the Model Context Protocol?
+```
+
+### @mention a document
+```
+> summarize @report.pdf
+> what does @deposition.md say about Angela Smith?
+```
+
+### Slash commands (with tab autocomplete)
+```
+> /format deposition.md      # rewrites doc in Markdown
+> /summarize financials.docx  # 2-3 line plain English summary
+```
+
+### Edit a document via natural language
+```
+> edit deposition.md and replace "Angela Smith" with "John Doe"
+```
+
+---
+
+## Available Documents (default)
+
+| ID | Description |
+|----|-------------|
+| `deposition.md` | Testimony of Angela Smith, P.E. |
+| `report.pdf` | State of a 20m condenser tower |
+| `financials.docx` | Project budget and expenditures |
+| `outlook.pdf` | Projected future system performance |
+| `plan.md` | Project implementation steps |
+| `spec.txt` | Technical equipment requirements |
+
+Add your own in `mcp_server.py` → `docs` dict.
+
+---
+
+## Tech Stack
+
+- [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk) — tools, resources, prompts
+- [OpenAI Python SDK](https://github.com/openai/openai-python) — OpenRouter-compatible API calls
+- [prompt-toolkit](https://github.com/prompt-toolkit/python-prompt-toolkit) — tab autocomplete, history
+- [uv](https://github.com/astral-sh/uv) — fast dependency management
+
+---
+
+## Related
+
+- [Anthropic Academy — MCP Course](https://anthropic.skilljar.com/introduction-to-model-context-protocol)
+- [MCP Specification](https://modelcontextprotocol.io)
