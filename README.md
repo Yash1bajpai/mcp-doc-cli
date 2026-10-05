@@ -53,7 +53,7 @@ uv sync
 Or with pip:
 
 ```bash
-pip install -r requirements.txt
+pip install .
 ```
 
 ### 3. Configure `.env`
@@ -68,6 +68,8 @@ Edit `.env`:
 CLAUDE_MODEL="moonshotai/kimi-k2.6:free"   # or any free model from openrouter.ai/models?max_price=0
 ANTHROPIC_API_KEY="sk-or-your-key-here"
 USE_UV=1
+# optional: persist document edits to this folder (otherwise docs are in-memory samples)
+# DOCS_DIR=./docs
 ```
 
 ### 4. Run
@@ -132,3 +134,13 @@ Add your own in `mcp_server.py` → `docs` dict.
 
 - [Anthropic Academy — MCP Course](https://anthropic.skilljar.com/introduction-to-model-context-protocol)
 - [MCP Specification](https://modelcontextprotocol.io)
+
+
+## Tests
+
+```bash
+uv sync --group dev
+uv run pytest
+```
+
+Tests cover the tool-calling loop, MCP tools/resources/prompts and the OpenAI-format request, using a scripted fake model (no API key needed).

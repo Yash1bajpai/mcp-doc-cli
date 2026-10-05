@@ -1,6 +1,6 @@
 from typing import List, Tuple
 from mcp.types import Prompt, PromptMessage
-from anthropic.types import MessageParam
+MessageParam = dict
 
 from core.chat import Chat
 from core.claude import Claude

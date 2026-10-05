@@ -1,24 +1,26 @@
 import json
-from typing import Optional, Literal, List
-from mcp.types import CallToolResult, Tool, TextContent
+from typing import Optional
+from mcp.types import TextContent
 from mcp_client import MCPClient
-from anthropic.types import Message, ToolResultBlockParam
 
 
 class ToolManager:
     @classmethod
-    async def get_all_tools(cls, clients: dict[str, MCPClient]) -> list[Tool]:
+    async def get_all_tools(cls, clients: dict[str, MCPClient]) -> list[dict]:
+        """MCP tools in OpenAI function-calling format."""
         tools = []
         for client in clients.values():
-            tool_models = await client.list_tools()
-            tools += [
-                {
-                    "name": t.name,
-                    "description": t.description,
-                    "input_schema": t.inputSchema,
-                }
-                for t in tool_models
-            ]
+            for t in await client.list_tools():
+                tools.append(
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": t.name,
+                            "description": t.description or "",
+                            "parameters": t.inputSchema,
+                        },
+                    }
+                )
         return tools
 
     @classmethod
@@ -27,74 +29,37 @@ class ToolManager:
     ) -> Optional[MCPClient]:
         for client in clients:
             tools = await client.list_tools()
-            tool = next((t for t in tools if t.name == tool_name), None)
-            if tool:
+            if any(t.name == tool_name for t in tools):
                 return client
         return None
 
-    @classmethod
-    def _build_tool_result_part(
-        cls,
-        tool_use_id: str,
-        text: str,
-        status: Literal["success"] | Literal["error"],
-    ) -> ToolResultBlockParam:
-        return {
-            "tool_use_id": tool_use_id,
-            "type": "tool_result",
-            "content": text,
-            "is_error": status == "error",
-        }
+    @staticmethod
+    def _result(tool_call_id: str, text: str) -> dict:
+        return {"role": "tool", "tool_call_id": tool_call_id, "content": text}
 
     @classmethod
-    async def execute_tool_requests(
-        cls, clients: dict[str, MCPClient], message: Message
-    ) -> List[ToolResultBlockParam]:
-        tool_requests = [
-            block for block in message.content if block.type == "tool_use"
-        ]
-        tool_result_blocks: list[ToolResultBlockParam] = []
-        for tool_request in tool_requests:
-            tool_use_id = tool_request.id
-            tool_name = tool_request.name
-            tool_input = tool_request.input
-
-            client = await cls._find_client_with_tool(
-                list(clients.values()), tool_name
-            )
-
-            if not client:
-                tool_result_part = cls._build_tool_result_part(
-                    tool_use_id, "Could not find that tool", "error"
-                )
-                tool_result_blocks.append(tool_result_part)
+    async def execute_tool_calls(cls, clients: dict[str, MCPClient], tool_calls) -> list[dict]:
+        """Run each model tool call via MCP; return OpenAI 'tool' messages."""
+        results = []
+        for tc in tool_calls:
+            name = tc.function.name
+            try:
+                args = json.loads(tc.function.arguments or "{}")
+            except json.JSONDecodeError as e:
+                results.append(cls._result(tc.id, f"Error: invalid JSON arguments: {e}"))
                 continue
 
-            tool_output: CallToolResult | None = None
+            client = await cls._find_client_with_tool(list(clients.values()), name)
+            if not client:
+                results.append(cls._result(tc.id, f"Error: could not find tool '{name}'"))
+                continue
             try:
-                tool_output = await client.call_tool(tool_name, tool_input)
-                items = []
-                if tool_output:
-                    items = tool_output.content
-                content_list = [
-                    item.text for item in items if isinstance(item, TextContent)
-                ]
-                content_json = json.dumps(content_list)
-                tool_result_part = cls._build_tool_result_part(
-                    tool_use_id,
-                    content_json,
-                    "error"
-                    if tool_output and tool_output.isError
-                    else "success",
-                )
+                out = await client.call_tool(name, args)
+                texts = [c.text for c in (out.content if out else []) if isinstance(c, TextContent)]
+                text = "\n".join(texts)
+                if out and out.isError:
+                    text = f"Error: {text}"
+                results.append(cls._result(tc.id, text))
             except Exception as e:
-                error_message = f"Error executing tool '{tool_name}': {e}"
-                print(error_message)
-                tool_result_part = cls._build_tool_result_part(
-                    tool_use_id,
-                    json.dumps({"error": error_message}),
-                    "error",
-                )
-
-            tool_result_blocks.append(tool_result_part)
-        return tool_result_blocks
+                results.append(cls._result(tc.id, f"Error executing tool '{name}': {e}"))
+        return results

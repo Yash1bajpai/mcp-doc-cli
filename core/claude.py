@@ -1,6 +1,4 @@
 from openai import OpenAI
-from anthropic.types import Message
-import anthropic
 
 
 class Claude:
@@ -16,7 +14,7 @@ class Claude:
         user_message = {
             "role": "user",
             "content": message.content
-            if isinstance(message, Message)
+            if hasattr(message, "content")
             else message,
         }
         messages.append(user_message)
@@ -25,7 +23,7 @@ class Claude:
         assistant_message = {
             "role": "assistant",
             "content": message.content
-            if isinstance(message, Message)
+            if hasattr(message, "content")
             else message,
         }
         messages.append(assistant_message)
@@ -37,43 +35,25 @@ class Claude:
             [block.text for block in message.content if block.type == "text"]
         )
 
+    def tool_calls_from_message(self, message) -> list:
+        if hasattr(message, "choices"):
+            return message.choices[0].message.tool_calls or []
+        return []
+
     def chat(
         self,
         messages,
         system=None,
         temperature=1.0,
-        stop_sequences=[],
+        stop_sequences=None,
         tools=None,
-        thinking=False,
-        thinking_budget=1024,
+        **_ignored,
     ):
+        """Send OpenAI-format messages (and optional OpenAI-format tools)."""
         openai_messages = []
-
         if system:
             openai_messages.append({"role": "system", "content": system})
-
-        for msg in messages:
-            role = msg["role"]
-            content = msg["content"]
-
-            if isinstance(content, list):
-                text_parts = []
-                for block in content:
-                    if isinstance(block, dict):
-                        if block.get("type") == "text":
-                            text_parts.append(block.get("text", ""))
-                        elif block.get("type") == "tool_result":
-                            text_parts.append(str(block.get("content", "")))
-                        elif block.get("type") == "tool_use":
-                            text_parts.append(f"[Tool call: {block.get('name')}]")
-                    elif hasattr(block, "type"):
-                        if block.type == "text":
-                            text_parts.append(block.text)
-                        elif block.type == "tool_result":
-                            text_parts.append(str(getattr(block, "content", "")))
-                content = " ".join(text_parts)
-
-            openai_messages.append({"role": role, "content": content})
+        openai_messages.extend(messages)
 
         params = {
             "model": self.model,
@@ -81,16 +61,15 @@ class Claude:
             "messages": openai_messages,
             "temperature": temperature,
         }
-
         if stop_sequences:
             params["stop"] = stop_sequences
+        if tools:
+            params["tools"] = tools
 
         import time
         for attempt in range(3):
             try:
-                response = self.client.chat.completions.create(**params)
-                response.stop_reason = "end_turn"
-                return response
+                return self.client.chat.completions.create(**params)
             except Exception as e:
                 if "429" in str(e) and attempt < 2:
                     print(f"Rate limited, retrying in 5s... ({attempt+1}/3)")
