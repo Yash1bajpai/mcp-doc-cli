@@ -13,6 +13,26 @@ docs = {
 }
 
 
+import os
+from pathlib import Path
+
+DOCS_DIR = os.getenv("DOCS_DIR")
+if DOCS_DIR:
+    _dir = Path(DOCS_DIR)
+    _dir.mkdir(parents=True, exist_ok=True)
+    for _f in _dir.iterdir():
+        if _f.is_file():
+            docs[_f.name] = _f.read_text(encoding="utf-8", errors="replace")
+    if not any(_dir.iterdir()):
+        for _k, _v in list(docs.items()):
+            (_dir / _k).write_text(_v, encoding="utf-8")
+
+
+def _persist(doc_id: str) -> None:
+    if DOCS_DIR:
+        (Path(DOCS_DIR) / Path(doc_id).name).write_text(docs[doc_id], encoding="utf-8")
+
+
 from pydantic import Field
 from mcp.server.fastmcp.prompts import base
 
@@ -44,7 +64,10 @@ def edit_document(
 ):
     if doc_id not in docs:
         raise ValueError(f"Doc with id {doc_id} not found")
+    if old_str not in docs[doc_id]:
+        raise ValueError(f"old_str not found in {doc_id}")
     docs[doc_id] = docs[doc_id].replace(old_str, new_str)
+    _persist(doc_id)
     return docs[doc_id]
 
 
