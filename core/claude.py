@@ -1,4 +1,11 @@
+import time
+
+import openai
 from openai import OpenAI
+
+
+class LLMError(Exception):
+    """A model/provider error with a message safe to show the user."""
 
 
 class Claude:
@@ -66,13 +73,28 @@ class Claude:
         if tools:
             params["tools"] = tools
 
-        import time
         for attempt in range(3):
             try:
                 return self.client.chat.completions.create(**params)
-            except Exception as e:
-                if "429" in str(e) and attempt < 2:
+            except openai.RateLimitError as e:
+                if attempt < 2:
                     print(f"Rate limited, retrying in 5s... ({attempt+1}/3)")
                     time.sleep(5)
-                else:
-                    raise
+                    continue
+                raise LLMError(
+                    f"The model '{self.model}' is rate limited right now "
+                    "(free models share a provider limit). Wait a minute and "
+                    "retry, or set a different CLAUDE_MODEL in .env."
+                ) from e
+            except openai.NotFoundError as e:
+                raise LLMError(
+                    f"The model '{self.model}' was not found or is no longer "
+                    "available (OpenRouter returned 404). Pick another model "
+                    "at openrouter.ai/models?max_price=0 and set CLAUDE_MODEL "
+                    "in .env."
+                ) from e
+            except openai.AuthenticationError as e:
+                raise LLMError(
+                    "OpenRouter rejected the API key (401). Check "
+                    "ANTHROPIC_API_KEY in .env."
+                ) from e

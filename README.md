@@ -65,7 +65,7 @@ cp .env.example .env
 Edit `.env`:
 
 ```
-CLAUDE_MODEL="moonshotai/kimi-k2.6:free"   # or any free model from openrouter.ai/models?max_price=0
+CLAUDE_MODEL="nvidia/nemotron-3-super-120b-a12b:free"   # free models change; see openrouter.ai/models?max_price=0&supported_parameters=tools
 ANTHROPIC_API_KEY="sk-or-your-key-here"
 USE_UV=1
 # optional: persist document edits to this folder (otherwise docs are in-memory samples)
