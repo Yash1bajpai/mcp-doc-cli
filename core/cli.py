@@ -9,6 +9,7 @@ from prompt_toolkit.document import Document
 from prompt_toolkit.buffer import Buffer
 
 from core.cli_chat import CliChat
+from core.claude import LLMError
 
 
 class CommandAutoSuggest(AutoSuggest):
@@ -201,5 +202,7 @@ class CliApp:
                 response = await self.agent.run(user_input)
                 print(f"\nResponse:\n{response}")
 
+            except LLMError as e:
+                print(f"\nError: {e}")
             except KeyboardInterrupt:
                 break
